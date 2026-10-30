@@ -1,0 +1,16 @@
+/*
+Theme Name: Velora
+Theme URI: https://example.com/velora
+Author: Velora
+Description: Premium custom WooCommerce theme for a fashion and lifestyle store. Requires WooCommerce and Velora Core.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: velora
+Tags: e-commerce, custom-logo, custom-menu, featured-images, theme-options, translation-ready, woocommerce
+*/
+
+body { margin: 0; }

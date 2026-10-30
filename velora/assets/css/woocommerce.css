@@ -1,0 +1,232 @@
+.velora-shop-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 2rem 0 4rem;
+}
+.velora-shop-header { margin-bottom: 1rem; }
+.velora-shop-header .page-title {
+  font-family: var(--v-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin: 0;
+}
+.velora-filters {
+  background: #fff;
+  border: 1px solid var(--v-border);
+  border-radius: 14px;
+  padding: 1.1rem;
+  position: sticky;
+  top: 5.5rem;
+}
+.velora-filters__close { display: none; }
+.velora-filter-group {
+  border: 0;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: grid;
+  gap: .4rem;
+}
+.velora-filter-group legend {
+  font-weight: 600;
+  margin-bottom: .35rem;
+}
+.velora-filter-group label {
+  display: flex;
+  gap: .45rem;
+  align-items: center;
+  font-size: .9rem;
+  color: var(--v-muted);
+}
+.velora-filter-group input[type="number"] {
+  width: 100%;
+  border: 1px solid var(--v-border);
+  border-radius: 8px;
+  padding: .55rem .7rem;
+}
+.velora-shop-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.velora-filter-open { display: none; }
+
+ul.products {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.1rem;
+}
+ul.products.columns-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+ul.products.columns-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.velora-product-card,
+li.product {
+  background: #fff;
+  border: 1px solid var(--v-border);
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.velora-product-card:hover,
+li.product:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(23,23,23,.06);
+}
+.velora-product-card img,
+li.product img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+.velora-product-card .woocommerce-loop-product__title,
+li.product .woocommerce-loop-product__title {
+  font-family: var(--v-display);
+  font-size: 1.05rem;
+  padding: 0 1rem;
+  margin: .85rem 0 .35rem;
+}
+.velora-product-card .price,
+li.product .price {
+  display: block;
+  padding: 0 1rem;
+  color: var(--v-text);
+  font-weight: 600;
+}
+.velora-product-card .button,
+li.product .button,
+.single_add_to_cart_button,
+.checkout-button,
+.woocommerce button.button.alt {
+  margin: .85rem 1rem 1.1rem;
+  display: inline-flex;
+  background: var(--v-accent);
+  color: #fff !important;
+  border: 0;
+  border-radius: 999px;
+  padding: .7rem 1rem;
+  font-weight: 600;
+}
+.velora-badge {
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+  z-index: 2;
+  background: var(--v-dark);
+  color: #fff;
+  font-size: .7rem;
+  padding: .3rem .55rem;
+  border-radius: 999px;
+}
+
+.single-product div.product {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 2rem;
+  padding: 2rem 0 3rem;
+}
+.single-product .product_title {
+  font-family: var(--v-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+.velora-product-subtitle { color: var(--v-muted); margin-top: -.5rem; }
+.velora-product-extras {
+  border-top: 1px solid var(--v-border);
+  border-bottom: 1px solid var(--v-border);
+  padding: .85rem 0;
+  margin: 1rem 0;
+  color: var(--v-muted);
+  font-size: .92rem;
+}
+.velora-wishlist-btn {
+  background: transparent !important;
+  color: var(--v-text) !important;
+  border: 1px solid var(--v-border) !important;
+  margin-left: .5rem !important;
+}
+.velora-shipping-note { color: var(--v-muted); font-size: .85rem; }
+
+.woocommerce-cart .woocommerce,
+.woocommerce-checkout .woocommerce,
+.woocommerce-account .woocommerce {
+  padding: 2rem 0 4rem;
+}
+.woocommerce table.shop_table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--v-border);
+  border-radius: 12px;
+  background: #fff;
+  table-layout: auto;
+}
+.woocommerce table.shop_table th,
+.woocommerce table.shop_table td {
+  padding: 1rem;
+  border-top: 1px solid var(--v-border);
+  vertical-align: middle;
+  text-align: left;
+}
+.woocommerce table.shop_table th {
+  font-size: .78rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--v-muted);
+  border-top: 0;
+}
+.woocommerce table.shop_table img {
+  width: 72px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.woocommerce-cart-form .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  align-items: center;
+}
+.woocommerce .cart-collaterals,
+.woocommerce-cart .cart_totals {
+  margin-top: 1.5rem;
+  max-width: 28rem;
+  margin-left: auto;
+}
+.woocommerce-cart .cart_totals h2 {
+  font-family: var(--v-display);
+  font-size: 1.35rem;
+}
+.checkout-button.button {
+  width: 100%;
+  justify-content: center;
+  margin: 1rem 0 0 !important;
+}
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error {
+  border-top-color: var(--v-accent);
+}
+
+@media (max-width: 900px) {
+  .velora-shop-layout,
+  .single-product div.product,
+  ul.products.columns-3,
+  ul.products.columns-4 { grid-template-columns: 1fr 1fr; }
+  .velora-shop-layout { grid-template-columns: 1fr; }
+  .velora-filters {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: min(88vw, 320px);
+    z-index: 70;
+    transform: translateX(-105%);
+    transition: transform .25s ease;
+    overflow: auto;
+    border-radius: 0;
+  }
+  .velora-filters.is-open { transform: translateX(0); }
+  .velora-filters__close,
+  .velora-filter-open { display: inline-flex; }
+}

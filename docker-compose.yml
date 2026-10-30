@@ -1,0 +1,53 @@
+services:
+  db:
+    image: mysql:8.0
+    volumes:
+      - velora_db:/var/lib/mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: velora
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    ports:
+      - "3308:3306"
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:php8.2-apache
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: velora
+    volumes:
+      - velora_wp:/var/www/html
+      - ./velora:/var/www/html/wp-content/themes/velora
+      - ./velora-core:/var/www/html/wp-content/plugins/velora-core
+
+  wpcli:
+    depends_on:
+      - wordpress
+    image: wordpress:cli-php8.2
+    # Matches wordpress:php8.2-apache (WP 7+ for current WooCommerce)
+    user: "33:33"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: velora
+    volumes:
+      - velora_wp:/var/www/html
+      - ./velora:/var/www/html/wp-content/themes/velora
+      - ./velora-core:/var/www/html/wp-content/plugins/velora-core
+      - ./bin:/scripts
+    entrypoint: ["wp", "--allow-root"]
+    command: ["--info"]
+
+volumes:
+  velora_db:
+  velora_wp:

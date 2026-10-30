@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 	<div class="velora-container velora-newsletter__inner">
 		<div>
 			<h2><?php esc_html_e( 'Stay close to the collection.', 'velora' ); ?></h2>
-			<p><?php esc_html_e( 'Demo signup only — connect a real provider before sending email.', 'velora' ); ?></p>
+			<p><?php esc_html_e( 'New arrivals and quiet updates — no noise, just the essentials.', 'velora' ); ?></p>
 		</div>
 		<form class="velora-newsletter__form" data-newsletter-form>
 			<label class="screen-reader-text" for="velora-newsletter-email"><?php esc_html_e( 'Email', 'velora' ); ?></label>

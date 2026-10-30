@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <a class="velora-skip" href="#main"><?php esc_html_e( 'Skip to content', 'velora' ); ?></a>
-<header class="velora-header" id="site-header">
+<header class="velora-header<?php echo is_front_page() ? ' velora-header--transparent' : ''; ?>" id="site-header">
 	<div class="velora-container velora-header__inner">
 		<button class="velora-nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="<?php esc_attr_e( 'Open menu', 'velora' ); ?>">
 			<span></span><span></span><span></span>

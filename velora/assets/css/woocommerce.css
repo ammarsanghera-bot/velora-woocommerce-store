@@ -65,51 +65,66 @@ ul.products.columns-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 .velora-product-card,
 li.product {
-  background: #fff;
-  border: 1px solid var(--v-border);
-  border-radius: 14px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   overflow: hidden;
   position: relative;
-  transition: transform .2s ease, box-shadow .2s ease;
+  transition: transform .25s ease;
 }
 .velora-product-card:hover,
 li.product:hover {
   transform: translateY(-3px);
-  box-shadow: 0 14px 34px rgba(23,23,23,.06);
 }
+.velora-product-card a img,
+li.product a img,
 .velora-product-card img,
 li.product img {
   width: 100%;
   aspect-ratio: 4/5;
   object-fit: cover;
+  background: #e8e3da;
+  border-radius: 2px;
 }
 .velora-product-card .woocommerce-loop-product__title,
 li.product .woocommerce-loop-product__title {
   font-family: var(--v-display);
-  font-size: 1.05rem;
-  padding: 0 1rem;
-  margin: .85rem 0 .35rem;
+  font-size: 1.08rem;
+  padding: 0;
+  margin: .9rem 0 .3rem;
+  font-weight: 600;
 }
 .velora-product-card .price,
 li.product .price {
   display: block;
-  padding: 0 1rem;
+  padding: 0;
   color: var(--v-text);
   font-weight: 600;
+  font-size: .95rem;
+}
+.velora-product-card .price del,
+li.product .price del {
+  color: var(--v-muted);
+  font-weight: 500;
+  margin-right: .35rem;
 }
 .velora-product-card .button,
 li.product .button,
 .single_add_to_cart_button,
 .checkout-button,
 .woocommerce button.button.alt {
-  margin: .85rem 1rem 1.1rem;
+  margin: .85rem 0 0;
   display: inline-flex;
-  background: var(--v-accent);
+  background: var(--v-dark);
   color: #fff !important;
   border: 0;
   border-radius: 999px;
-  padding: .7rem 1rem;
+  padding: .72rem 1.15rem;
   font-weight: 600;
+}
+.velora-product-card .button:hover,
+li.product .button:hover {
+  background: var(--v-accent);
 }
 .velora-badge {
   position: absolute;

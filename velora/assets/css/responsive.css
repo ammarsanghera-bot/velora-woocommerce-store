@@ -1,8 +1,6 @@
 @media (max-width: 1100px) {
-  .velora-cat-grid,
+  .velora-cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .velora-why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .velora-hero__grid,
-  .velora-promo__inner,
   .velora-newsletter__inner,
   .velora-footer__grid { grid-template-columns: 1fr; }
 }
@@ -10,14 +8,28 @@
 @media (max-width: 900px) {
   .velora-nav-toggle { display: inline-flex; }
   .velora-header__inner { grid-template-columns: auto 1fr auto; }
+  .velora-header--transparent .velora-nav-toggle {
+    border-color: rgba(255,255,255,.4);
+    background: rgba(255,255,255,.12);
+  }
+  .velora-header--transparent .velora-nav-toggle span { background: #fff; }
+  .velora-header--transparent.is-scrolled .velora-nav-toggle {
+    border-color: var(--v-border);
+    background: #fff;
+  }
+  .velora-header--transparent.is-scrolled .velora-nav-toggle span { background: var(--v-text); }
   .velora-nav {
     position: absolute;
-    left: 1rem; right: 1rem; top: 4.4rem;
+    left: 1rem; right: 1rem; top: 4.5rem;
     background: #fff; border: 1px solid var(--v-border); border-radius: 14px;
     padding: 1rem; display: none; box-shadow: 0 16px 40px rgba(0,0,0,.08);
   }
   .velora-nav.is-open { display: block; }
   .velora-nav__list { flex-direction: column; align-items: flex-start; }
+  .velora-nav__list a { color: var(--v-text) !important; }
+  .velora-hero { min-height: min(92vh, 700px); }
+  .velora-hero__content { padding: 6.5rem 0 3.25rem; margin-left: auto; }
+  .velora-promo__band { min-height: 360px; }
   ul.products.columns-4 { grid-template-columns: 1fr 1fr; }
 }
 
@@ -30,4 +42,7 @@
   .single-product div.product { grid-template-columns: 1fr; }
   .velora-newsletter__form { grid-template-columns: 1fr; }
   .velora-footer__bar { flex-direction: column; }
+  .velora-hero h1 { font-size: clamp(2.2rem, 10vw, 3rem); }
+  .velora-hero__actions { flex-direction: column; align-items: stretch; }
+  .velora-hero__actions .velora-btn { width: 100%; }
 }

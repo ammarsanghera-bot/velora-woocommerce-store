@@ -4,7 +4,9 @@
   const nav = document.getElementById('site-nav');
 
   const onScroll = () => {
-    if (header) header.classList.toggle('is-scrolled', window.scrollY > 8);
+    if (!header) return;
+    const threshold = header.classList.contains('velora-header--transparent') ? 48 : 8;
+    header.classList.toggle('is-scrolled', window.scrollY > threshold);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

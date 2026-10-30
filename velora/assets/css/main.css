@@ -36,19 +36,51 @@ a:hover { color: var(--v-accent); }
 
 .velora-container { width: min(100% - 2.5rem, var(--v-max)); margin-inline: auto; }
 
+/* —— Header —— */
 .velora-header {
   position: sticky; top: 0; z-index: 40;
-  background: rgba(248,247,243,.92);
-  backdrop-filter: blur(10px);
+  background: rgba(248,247,243,.94);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
-  transition: border-color .2s ease, box-shadow .2s ease;
+  transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, color .25s ease;
 }
 .velora-header.is-scrolled {
   border-bottom-color: var(--v-border);
-  box-shadow: 0 10px 30px rgba(23,23,23,.04);
+  box-shadow: 0 10px 30px rgba(23,23,23,.05);
 }
+.velora-header--transparent {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  background: transparent;
+  backdrop-filter: none;
+}
+.velora-header--transparent .velora-logo,
+.velora-header--transparent .velora-nav__list a {
+  color: rgba(255,255,255,.92);
+}
+.velora-header--transparent .velora-nav__list a:hover { color: #fff; }
+.velora-header--transparent .velora-icon-link {
+  border-color: rgba(255,255,255,.35);
+  background: rgba(255,255,255,.12);
+  color: #fff;
+}
+.velora-header--transparent.is-scrolled {
+  position: sticky;
+  background: rgba(248,247,243,.96);
+  backdrop-filter: blur(12px);
+}
+.velora-header--transparent.is-scrolled .velora-logo,
+.velora-header--transparent.is-scrolled .velora-nav__list a { color: var(--v-text); }
+.velora-header--transparent.is-scrolled .velora-nav__list a { color: var(--v-muted); }
+.velora-header--transparent.is-scrolled .velora-nav__list a:hover { color: var(--v-text); }
+.velora-header--transparent.is-scrolled .velora-icon-link {
+  border-color: var(--v-border);
+  background: #fff;
+  color: var(--v-text);
+}
+
 .velora-header__inner {
-  min-height: 4.25rem;
+  min-height: 4.5rem;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -56,23 +88,28 @@ a:hover { color: var(--v-accent); }
 }
 .velora-logo {
   font-family: var(--v-display);
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  letter-spacing: .12em;
+  letter-spacing: .14em;
 }
 .velora-logo--light { color: #fff; }
 .velora-nav__list {
-  display: flex; gap: 1.2rem; list-style: none; margin: 0; padding: 0; justify-content: center;
+  display: flex; gap: 1.35rem; list-style: none; margin: 0; padding: 0; justify-content: center;
 }
-.velora-nav__list a { font-size: .9rem; color: var(--v-muted); }
+.velora-nav__list a {
+  font-size: .88rem; color: var(--v-muted); letter-spacing: .02em;
+  transition: color .2s ease;
+}
 .velora-nav__list a:hover { color: var(--v-text); }
-.velora-header__actions { display: flex; align-items: center; gap: .55rem; }
+.velora-header__actions { display: flex; align-items: center; gap: .5rem; }
 .velora-icon-link {
   position: relative;
-  width: 2.4rem; height: 2.4rem;
+  width: 2.45rem; height: 2.45rem;
   display: inline-flex; align-items: center; justify-content: center;
   border: 1px solid var(--v-border); border-radius: 999px; background: #fff;
+  transition: border-color .2s ease, background .2s ease;
 }
+.velora-icon-link:hover { border-color: var(--v-accent); }
 .velora-cart-count {
   position: absolute; top: -4px; right: -4px;
   min-width: 1.1rem; height: 1.1rem; border-radius: 999px;
@@ -85,129 +122,209 @@ a:hover { color: var(--v-accent); }
 }
 .velora-nav-toggle span { width: 14px; height: 1.5px; background: var(--v-text); display: block; }
 
+/* —— Buttons —— */
 .velora-btn {
   display: inline-flex; align-items: center; justify-content: center;
-  border-radius: 999px; padding: .85rem 1.35rem; font-weight: 600; font-size: .9rem;
-  border: 1px solid transparent; cursor: pointer; transition: transform .2s ease, background .2s ease;
+  border-radius: 999px; padding: .9rem 1.45rem; font-weight: 600; font-size: .9rem;
+  border: 1px solid transparent; cursor: pointer;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
 }
 .velora-btn:hover { transform: translateY(-1px); }
 .velora-btn--primary { background: var(--v-accent); color: #fff; }
 .velora-btn--primary:hover { background: #917650; color: #fff; }
-.velora-btn--ghost { background: transparent; border-color: var(--v-border); }
+.velora-btn--ghost { background: transparent; border-color: var(--v-border); color: var(--v-text); }
+.velora-btn--light { background: #fff; color: var(--v-dark); }
+.velora-btn--light:hover { background: #f3efe7; color: var(--v-dark); }
+.velora-btn--ghost-light {
+  background: transparent; border-color: rgba(255,255,255,.55); color: #fff;
+}
+.velora-btn--ghost-light:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,.08); }
 .velora-text-link { color: var(--v-accent); font-weight: 600; font-size: .9rem; }
 
+/* —— Full-bleed hero —— */
 .velora-hero {
-  padding: 0;
-  min-height: min(88vh, 720px);
+  position: relative;
+  min-height: min(100vh, 820px);
   display: flex;
-  align-items: center;
-  background:
-    linear-gradient(105deg, rgba(248,247,243,.94) 0%, rgba(248,247,243,.72) 42%, rgba(248,247,243,.15) 70%),
-    radial-gradient(ellipse at 78% 40%, #c4b7a2 0%, transparent 55%),
-    linear-gradient(160deg, #ebe6dc, #9a8f7c 55%, #5c554c);
+  align-items: flex-end;
+  overflow: hidden;
+  color: #fff;
+  background: #2a2622;
 }
-.velora-hero__grid {
-  display: grid; grid-template-columns: 1.05fr .95fr; gap: 2rem; align-items: center;
+.velora-hero__media {
+  position: absolute; inset: 0;
+}
+.velora-hero__img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 28%;
+  transform: scale(1.02);
+  animation: velora-ken .9s ease both;
+}
+@keyframes velora-ken {
+  from { transform: scale(1.08); }
+  to { transform: scale(1.02); }
+}
+.velora-hero__shade {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(17,15,13,.72) 0%, rgba(17,15,13,.42) 42%, rgba(17,15,13,.18) 70%, rgba(17,15,13,.28) 100%),
+    linear-gradient(180deg, rgba(17,15,13,.25) 0%, transparent 35%, rgba(17,15,13,.55) 100%);
+}
+.velora-hero__content {
+  position: relative;
+  z-index: 1;
   width: min(100% - 2.5rem, var(--v-max));
   margin-inline: auto;
-  padding: 4.5rem 0 3.5rem;
+  padding: 7.5rem 0 4.75rem;
+  max-width: 38rem;
+  margin-left: max(1.25rem, calc((100% - var(--v-max)) / 2));
 }
-.velora-hero h1 {
-  font-family: var(--v-display); font-size: clamp(2.4rem, 5vw, 4rem);
-  line-height: 1.08; margin: 0 0 1rem; font-weight: 600;
+.velora-hero__brand {
+  color: #fff;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin: 0 0 1.1rem;
+  letter-spacing: .18em;
   animation: velora-enter .7s ease both;
 }
-.velora-hero p { color: var(--v-muted); max-width: 32rem; animation: velora-enter .7s ease both .12s; }
-.velora-hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; animation: velora-enter .7s ease both .2s; }
-.velora-hero__visual {
-  min-height: 420px; border-radius: 0;
-  border: 1px solid rgba(231,227,220,.55);
-  background:
-    linear-gradient(180deg, transparent 40%, rgba(23,23,23,.18)),
-    linear-gradient(145deg, #e8e1d4, #b9ae9a 40%, #7a7164);
-  box-shadow: 0 30px 60px rgba(23,23,23,.12);
-  animation: velora-enter .8s ease both .08s;
+.velora-hero h1 {
+  font-family: var(--v-display);
+  font-size: clamp(2.6rem, 5.5vw, 4.35rem);
+  line-height: 1.05;
+  margin: 0 0 1rem;
+  font-weight: 600;
+  color: #fff;
+  animation: velora-enter .7s ease both .08s;
 }
-@keyframes velora-enter {
-  from { transform: translateY(10px); }
-  to { transform: none; }
+.velora-hero__lead {
+  color: rgba(255,255,255,.82);
+  max-width: 30rem;
+  margin: 0;
+  font-size: 1.05rem;
+  animation: velora-enter .7s ease both .16s;
+}
+.velora-hero__actions {
+  display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem;
+  animation: velora-enter .7s ease both .24s;
 }
 .velora-eyebrow {
   text-transform: uppercase; letter-spacing: .16em; font-size: .72rem;
   font-weight: 600; color: var(--v-accent); margin: 0 0 .75rem;
 }
+.velora-eyebrow--light { color: #d8c3a0; }
 
-.velora-section { padding: 4.5rem 0; }
+@keyframes velora-enter {
+  from { transform: translateY(14px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+/* —— Sections —— */
+.velora-section { padding: 5rem 0; }
 .velora-section--muted { background: #f1eee7; }
-.velora-section__header { max-width: 36rem; margin-bottom: 2rem; }
+.velora-section__header { max-width: 36rem; margin-bottom: 2.25rem; }
 .velora-section__header h2,
 .velora-promo h2,
 .velora-newsletter h2 {
-  font-family: var(--v-display); font-weight: 600; font-size: clamp(1.7rem, 3vw, 2.4rem); margin: 0 0 .6rem;
+  font-family: var(--v-display); font-weight: 600; font-size: clamp(1.75rem, 3vw, 2.5rem); margin: 0 0 .6rem;
 }
 .velora-section__header p { color: var(--v-muted); }
 
 .velora-cat-grid {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem;
 }
 .velora-cat-card {
-  background: #fff; border: 1px solid var(--v-border); border-radius: 16px; overflow: hidden;
-  transition: transform .2s ease, border-color .2s ease;
-  display: flex; flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  display: block;
+  color: #fff;
+  transition: transform .35s ease;
 }
-.velora-cat-card:hover { transform: translateY(-3px); border-color: var(--v-accent); }
+.velora-cat-card:hover { transform: translateY(-4px); color: #fff; }
 .velora-cat-card__media {
-  display: block; position: relative; aspect-ratio: 4/5; background: #ddd7cb; overflow: hidden;
+  display: block; position: relative; aspect-ratio: 3/4; overflow: hidden; background: #cfc7ba;
 }
 .velora-cat-card__media img {
   width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .55s ease;
+}
+.velora-cat-card:hover .velora-cat-card__media img { transform: scale(1.05); }
+.velora-cat-card__media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(17,15,13,.72) 100%);
 }
 .velora-placeholder {
   display: block; width: 100%; height: 100%; min-height: 280px;
   background: linear-gradient(145deg, #d9d2c4, #aea495);
 }
 .velora-cat-card__body {
-  display: flex; justify-content: space-between; align-items: center; gap: .75rem; padding: 1rem;
-  background: #fff;
+  position: absolute; left: 0; right: 0; bottom: 0;
+  display: flex; justify-content: space-between; align-items: flex-end; gap: .75rem;
+  padding: 1.15rem 1.1rem;
+  z-index: 1;
 }
-.velora-cat-card__body strong { font-family: var(--v-display); font-size: 1.05rem; }
-.velora-cat-card__body em { font-style: normal; color: var(--v-accent); font-size: .85rem; font-weight: 600; }
+.velora-cat-card__body strong {
+  font-family: var(--v-display); font-size: 1.15rem; font-weight: 600; color: #fff;
+}
+.velora-cat-card__body em {
+  font-style: normal; color: #d8c3a0; font-size: .82rem; font-weight: 600; letter-spacing: .04em;
+}
 
-.velora-promo { padding: 0 0 4.5rem; }
-.velora-promo__inner {
-  display: grid; grid-template-columns: 1.1fr .9fr; gap: 1.5rem; align-items: center;
-  background: var(--v-dark); color: #fff; border-radius: 22px; padding: 2.5rem;
+/* —— Promo band —— */
+.velora-promo { padding: 0 0 5rem; }
+.velora-promo__band {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+  background: #1b1916;
 }
-.velora-promo p { color: rgba(255,255,255,.72); }
-.velora-promo__visual {
-  min-height: 260px; border-radius: 14px;
-  background: linear-gradient(135deg, #3a342c, #a58a63);
+.velora-promo__img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
 }
-.velora-promo .velora-eyebrow { color: #d8c3a0; }
+.velora-promo__shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(17,15,13,.78) 0%, rgba(17,15,13,.45) 48%, rgba(17,15,13,.2) 100%);
+}
+.velora-promo__copy {
+  position: relative; z-index: 1;
+  max-width: 34rem;
+  padding: 3.5rem 0;
+}
+.velora-promo__copy p { color: rgba(255,255,255,.8); max-width: 28rem; }
+.velora-promo__copy .velora-btn { margin-top: .5rem; }
 
 .velora-why-grid {
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem;
 }
 .velora-why-grid article {
-  background: #fff; border: 1px solid var(--v-border); border-radius: 14px; padding: 1.25rem;
+  padding: 1.35rem 0 0;
+  border-top: 1px solid var(--v-border);
+  background: transparent;
 }
-.velora-why-grid span { color: var(--v-accent); font-size: .8rem; letter-spacing: .1em; }
-.velora-why-grid h3 { font-family: var(--v-display); font-size: 1.2rem; margin: .5rem 0; }
+.velora-why-grid span { color: var(--v-accent); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; }
+.velora-why-grid h3 { font-family: var(--v-display); font-size: 1.25rem; margin: .55rem 0 .45rem; }
 .velora-why-grid p { color: var(--v-muted); margin: 0; font-size: .92rem; }
 
-.velora-newsletter { padding: 0 0 4.5rem; }
+.velora-newsletter { padding: 0 0 5rem; }
 .velora-newsletter__inner {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: end;
-  border: 1px solid var(--v-border); background: #fff; border-radius: 18px; padding: 2rem;
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: 2rem; align-items: end;
+  border-top: 1px solid var(--v-border);
+  border-bottom: 1px solid var(--v-border);
+  background: transparent;
+  border-radius: 0;
+  padding: 2.75rem 0;
 }
 .velora-newsletter__form { display: grid; grid-template-columns: 1fr auto; gap: .65rem; }
 .velora-newsletter__form input {
-  border: 1px solid var(--v-border); border-radius: 999px; padding: .85rem 1rem; font: inherit;
+  border: 1px solid var(--v-border); border-radius: 999px; padding: .9rem 1.1rem; font: inherit; background: #fff;
 }
 .velora-newsletter__msg { grid-column: 1 / -1; color: var(--v-muted); font-size: .85rem; margin: 0; }
 
 .velora-footer {
-  background: #121212; color: rgba(255,255,255,.75); padding: 3.5rem 0 1.25rem;
+  background: #121212; color: rgba(255,255,255,.75); padding: 3.75rem 0 1.25rem;
 }
 .velora-footer__grid {
   display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem;
@@ -216,31 +333,40 @@ a:hover { color: var(--v-accent); }
 .velora-footer h2 { color: #fff; font-family: var(--v-display); font-size: 1rem; }
 .velora-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
 .velora-footer a { color: rgba(255,255,255,.72); }
+.velora-footer a:hover { color: #fff; }
 .velora-footer__bar {
   display: flex; justify-content: space-between; gap: 1rem; padding-top: 1rem; font-size: .85rem;
 }
 
 .velora-minicart[hidden] { display: none !important; }
 .velora-minicart {
-  position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 60; display: flex; justify-content: flex-end;
+  position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 60; display: flex; justify-content: flex-end;
 }
 .velora-minicart__panel {
-  width: min(100%, 380px); height: 100%; background: #fff; padding: 1.25rem; overflow: auto;
+  width: min(100%, 400px); height: 100%; background: #fff; padding: 1.35rem; overflow: auto;
 }
 .velora-minicart__close { border: 0; background: transparent; font-size: 1.5rem; float: right; cursor: pointer; }
+.velora-minicart__panel h2 { font-family: var(--v-display); font-size: 1.4rem; margin: 0 0 1rem; }
 
 .velora-empty {
   border: 1px dashed var(--v-border); border-radius: 12px; padding: 1.25rem; color: var(--v-muted);
 }
 
+/* Product loop polish on home */
+.velora-section ul.products { margin-top: .5rem; }
+.velora-section .woocommerce-LoopProduct-link img {
+  transition: transform .45s ease;
+}
+.velora-section li.product:hover .woocommerce-LoopProduct-link img {
+  transform: scale(1.03);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
+  .velora-hero__img { transform: none; }
+  .velora-hero__brand,
   .velora-hero h1,
-  .velora-hero p,
-  .velora-hero__actions,
-  .velora-hero__visual {
-    opacity: 1 !important;
-    transform: none !important;
-  }
+  .velora-hero__lead,
+  .velora-hero__actions { opacity: 1; transform: none; }
 }

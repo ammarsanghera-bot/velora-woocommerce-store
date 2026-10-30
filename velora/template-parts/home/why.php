@@ -10,8 +10,8 @@ defined( 'ABSPATH' ) || exit;
 $items = array(
 	array( __( 'Thoughtfully Selected Products', 'velora' ), __( 'Each piece is chosen for clarity of form and everyday utility.', 'velora' ) ),
 	array( __( 'Quality-Focused Design', 'velora' ), __( 'Materials and construction prioritized over seasonal noise.', 'velora' ) ),
-	array( __( 'Secure Shopping', 'velora' ), __( 'Checkout runs on WooCommerce with gateway sandbox support.', 'velora' ) ),
-	array( __( 'Reliable Customer Support', 'velora' ), __( 'Clear policies and responsive care for portfolio demonstration.', 'velora' ) ),
+	array( __( 'Secure Shopping', 'velora' ), __( 'Protected checkout with trusted payment gateways.', 'velora' ) ),
+	array( __( 'Reliable Customer Support', 'velora' ), __( 'Clear policies and attentive care when you need it.', 'velora' ) ),
 );
 ?>
 <section class="velora-section">

@@ -7,7 +7,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$slugs = array( 'women', 'men', 'bags', 'lifestyle', 'footwear', 'accessories' );
+$slugs    = array( 'women', 'men', 'bags', 'lifestyle' );
+$fallback = VELORA_URI . '/assets/images/cat-fallback.jpg';
 ?>
 <section class="velora-section">
 	<div class="velora-container">
@@ -22,17 +23,12 @@ $slugs = array( 'women', 'men', 'bags', 'lifestyle', 'footwear', 'accessories' )
 				if ( ! $term || is_wp_error( $term ) ) {
 					continue;
 				}
-				$thumb_id = get_term_meta( $term->term_id, 'thumbnail_id', true );
+				$thumb_id = (int) get_term_meta( $term->term_id, 'thumbnail_id', true );
+				$img      = $thumb_id ? wp_get_attachment_image_url( $thumb_id, 'velora-category' ) : $fallback;
 				?>
 				<a class="velora-cat-card" href="<?php echo esc_url( get_term_link( $term ) ); ?>">
 					<span class="velora-cat-card__media">
-						<?php
-						if ( $thumb_id ) {
-							echo wp_get_attachment_image( (int) $thumb_id, 'velora-category', false, array( 'loading' => 'lazy' ) );
-						} else {
-							echo '<span class="velora-placeholder"></span>';
-						}
-						?>
+						<img src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( $term->name ); ?>" loading="lazy" decoding="async" width="600" height="800" />
 					</span>
 					<span class="velora-cat-card__body">
 						<strong><?php echo esc_html( $term->name ); ?></strong>

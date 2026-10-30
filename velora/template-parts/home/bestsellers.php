@@ -30,7 +30,7 @@ $q = new WP_Query(
 		<header class="velora-section__header">
 			<p class="velora-eyebrow"><?php esc_html_e( 'Staff picks', 'velora' ); ?></p>
 			<h2><?php esc_html_e( 'Featured products', 'velora' ); ?></h2>
-			<p><?php esc_html_e( 'Products marked Featured in WooCommerce — no fabricated sales counts.', 'velora' ); ?></p>
+			<p><?php esc_html_e( 'A focused selection of pieces we return to again and again.', 'velora' ); ?></p>
 		</header>
 		<?php if ( $q->have_posts() ) : ?>
 			<ul class="products columns-4">
